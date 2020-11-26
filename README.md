@@ -44,6 +44,7 @@ gcloud ai-platform jobs submit training $JOB \
     --package-path trainer \
     --staging-bucket $BUCKET \
     --region $REGION \
+    --python-version 3.7 \
     --runtime-version 2.2
 ```
 
