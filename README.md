@@ -33,12 +33,12 @@ gcloud ai-platform local train --module-name trainer.iris --package-path trainer
 
 ```
 PROJECT=$(gcloud config list project --format "value(core.project)")
-BUCKET=gs://${PROJECT}-aiplatform  
+BUCKET=gs://${PROJECT}-aiplatform
 REGION=us-central1
 gsutil mb -l $REGION $BUCKET
 ```
 ```
-JOB=$iris1
+JOB=iris1
 gcloud ai-platform jobs submit training $JOB \
     --module-name trainer.iris \
     --package-path trainer \
