@@ -14,7 +14,7 @@ pip3 install --user --upgrade pip
 pip3 install --user --upgrade virtualenv
 virtualenv mlenv
 source mlenv/bin/activate
-pip3 install tensorflow
+pip3 install tensorflow==2.2
 ```
 
 ```
