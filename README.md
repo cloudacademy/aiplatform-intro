@@ -20,7 +20,7 @@ pip3 install tensorflow==2.2
 ```
 git clone https://github.com/cloudacademy/aiplatform-intro.git
 cd aiplatform-intro/iris/trainer
-python3 iris.py
+python3 iris.py --job-dir export
 ```
 
 ### Training a Model with AI Platform
@@ -28,7 +28,7 @@ python3 iris.py
 
 ```
 cd ..
-gcloud ai-platform local train --module-name trainer.iris --package-path trainer
+gcloud ai-platform local train --module-name trainer.iris --package-path trainer --job-dir export
 ```
 
 ```
@@ -45,6 +45,7 @@ gcloud ai-platform jobs submit training $JOB \
     --staging-bucket $BUCKET \
     --region $REGION \
     --python-version 3.7 \
-    --runtime-version 2.2
+    --runtime-version 2.2 \
+    --job-dir $BUCKET/$JOB
 ```
 
