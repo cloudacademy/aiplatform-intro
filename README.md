@@ -50,5 +50,28 @@ gcloud ai-platform jobs submit training $JOB \
 ```
 
 ### Feature Engineering
-[PetFinder dataset columns](https://www.tensorflow.org/tutorials/structured_data/feature_columns#the_dataset). 
+[PetFinder dataset columns](https://www.tensorflow.org/tutorials/structured_data/feature_columns#the_dataset)  
 
+```
+pip3 install numpy pandas sklearn
+cd ../pets
+```
+```
+gcloud ai-platform local train --module-name trainer.pets --package-path trainer --job-dir export
+```
+
+### Distributed Training on AI Platform
+Hyperparameter Tuning: https://cloud.google.com/ai-platform/training/docs/hyperparameter-tuning-overview  
+
+```
+JOB=pets1
+gcloud ai-platform jobs submit training $JOB \
+    --module-name trainer.pets \
+    --package-path trainer \
+    --staging-bucket $BUCKET \
+    --region $REGION \
+    --python-version 3.7 \
+    --runtime-version 2.2 \
+    --scale-tier STANDARD_1 \
+    --job-dir $BUCKET/$JOB
+```
