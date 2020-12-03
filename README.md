@@ -49,3 +49,6 @@ gcloud ai-platform jobs submit training $JOB \
     --job-dir $BUCKET/$JOB
 ```
 
+### Feature Engineering
+[PetFinder dataset columns](https://www.tensorflow.org/tutorials/structured_data/feature_columns#the_dataset). 
+
