@@ -30,7 +30,6 @@ python3 iris.py --job-dir export
 cd ..
 gcloud ai-platform local train --module-name trainer.iris --package-path trainer --job-dir export
 ```
-
 ```
 PROJECT=$(gcloud config list project --format "value(core.project)")
 BUCKET=gs://${PROJECT}-aiplatform
@@ -48,6 +47,7 @@ gcloud ai-platform jobs submit training $JOB \
     --runtime-version 2.2 \
     --job-dir $BUCKET/$JOB
 ```
+[Runtime version list](https://cloud.google.com/ai-platform/training/docs/runtime-version-list)  
 
 ### Feature Engineering
 [PetFinder dataset columns](https://www.tensorflow.org/tutorials/structured_data/feature_columns#the_dataset)  
@@ -61,8 +61,6 @@ gcloud ai-platform local train --module-name trainer.pets --package-path trainer
 ```
 
 ### Distributed Training on AI Platform
-Hyperparameter Tuning: https://cloud.google.com/ai-platform/training/docs/hyperparameter-tuning-overview  
-
 ```
 JOB=pets1
 gcloud ai-platform jobs submit training $JOB \
@@ -75,3 +73,26 @@ gcloud ai-platform jobs submit training $JOB \
     --scale-tier STANDARD_1 \
     --job-dir $BUCKET/$JOB
 ```
+
+### Deploying a Model on AI Platform
+```
+gcloud ai-platform models create iris --regions=$REGION  
+```
+```
+gcloud ai-platform versions create v1 \
+    --model iris \
+    --runtime-version 2.2 \
+    --origin $BUCKET/iris1
+```
+```
+cd ../iris
+gcloud ai-platform predict \
+    --model iris \
+    --version v1 \
+    --json-request test.json
+```
+
+### Summary
+[AI Platform documentation](https://cloud.google.com/ai-platform/docs)  
+support@cloudacademy.com  
+
