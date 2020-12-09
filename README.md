@@ -36,6 +36,7 @@ BUCKET=gs://${PROJECT}-aiplatform
 REGION=us-central1
 gsutil mb -l $REGION $BUCKET
 ```
+[AI Platform Training Regions](https://cloud.google.com/ai-platform/training/docs/regions)  
 ```
 JOB=iris1
 gcloud ai-platform jobs submit training $JOB \
