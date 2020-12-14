@@ -77,7 +77,7 @@ gcloud ai-platform jobs submit training $JOB \
 
 ### Deploying a Model on AI Platform
 ```
-gcloud ai-platform models create iris --regions=$REGION  
+gcloud ai-platform models create iris  
 ```
 ```
 gcloud ai-platform versions create v1 \
